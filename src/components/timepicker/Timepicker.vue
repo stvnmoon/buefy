@@ -1,6 +1,6 @@
 <template>
     <div class="timepicker control" :class="[size, {'is-expanded': expanded}]">
-        <b-dropdown v-if="!isMobile || inline"
+        <b-dropdown v-if="!isMobile || mobileDisabled || inline"
             ref="dropdown"
             :disabled="disabled"
             :inline="inline">
@@ -215,6 +215,10 @@
                         return timeParser(date, vm)
                     }
                 }
+            },
+            mobileDisabled: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
